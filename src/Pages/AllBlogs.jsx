@@ -39,7 +39,7 @@ const AllBlogs = () => {
           {blogPost.data.map((post) => (
             <div key={post._id}>
               <div>
-                <AllBlogsCart post={post}></AllBlogsCart>
+                <AllBlogsCart data={post}></AllBlogsCart>
               </div>
             </div>
           ))}
