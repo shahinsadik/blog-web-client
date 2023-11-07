@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import Comments from './Comments';
+import Comments from "./Comments";
 const BlogDetails = () => {
   const { id } = useParams();
   const singlePostDetails = async () => {
@@ -30,7 +30,7 @@ const BlogDetails = () => {
 
   return (
     <div className="grid lg:grid-cols-4 m-5 gap-5 ">
-      <div className=" col-span-3 ">
+      <div className=" lg:col-span-3 ">
         <div className="border-2 ">
           <h1 className="text-5xl text-center font-bold my-2">
             {postDetails.data.title}
@@ -61,9 +61,9 @@ const BlogDetails = () => {
           </div>
         </div>
       </div>
-      <div className="col-span-1">
+      <div className="lg:col-span-1">
         <div>
-            <Comments id={id}></Comments>
+          <Comments id={id}></Comments>
         </div>
       </div>
     </div>

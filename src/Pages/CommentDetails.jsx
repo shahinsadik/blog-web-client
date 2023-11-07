@@ -37,19 +37,24 @@ const CommentDetails = ({ id }) => {
 
   return (
     <div>
-        
-      <div >
+      <h1 className="text-xl mb-3 font-bold text-center">Recent Comments</h1>
+      <div>
         {filteredComments.map((comment) => (
           <div key={comment._id}>
-            <h1 className='text-xl font-bold text-center'>Recent Comments</h1>
-            <div className="border-2 mt-2 rounded-lg ">
-              <div className='bg-[#0e7490] rounded-lg'>
-                <div className="flex gap-5  items-center">
-                  <img className="h-10" src={comment.CommentUserPhoto} alt="" />
-                  <h1 className="text-xl font-bold text-white">{comment.CommentUserName}</h1>
+            <div className="border mt-2 rounded-lg ">
+              <div className=" rounded-lg">
+                <div className="flex gap-5 border  items-center">
+                  <img
+                    className="h-10 rounded-full"
+                    src={comment.CommentUserPhoto}
+                    alt=""
+                  />
+                  <h1 className="text-xl font-bold ">
+                    {comment.CommentUserName}
+                  </h1>
                 </div>
-                <div className='bg-[#71C6DE]'>
-                  <h1 className='p-2 text-sm text-gray-600'>{comment.commentTitle}</h1>
+                <div className="">
+                  <h1 className="p-2 text-sm">{comment.commentTitle}</h1>
                 </div>
               </div>
             </div>

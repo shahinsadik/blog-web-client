@@ -24,8 +24,6 @@ const AllBlogs = () => {
       </div>
     );
   }
-
-  console.log(blogPost.data.category);
   return (
     <div>
       <div>
