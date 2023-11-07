@@ -1,12 +1,10 @@
 import { Button, Label, TextInput, Textarea, Select } from "flowbite-react";
-// import { toast } from 'react-hot-toast';
-const AddBlog = () => {
-  //   const [title, setTitle] = useState("");
-  //   const [imgUrl, setImgUrl] = useState("");
-  //   const [category, setCategory] = useState("");
-  //   const [shortDes, setShortDes] = useState("");
-  //   const [longDes, setLongDes] = useState("");
 
+import { toast } from "react-hot-toast";
+import useAuth from "./../Hooks/useAuth";
+const AddBlog = () => {
+  const { user } = useAuth();
+  console.log(user);
   const handleBlogPost = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,16 +14,33 @@ const AddBlog = () => {
     const shortDes = form.shortDes.value;
     const longDes = form.longDes.value;
     const currentTime = new Date();
-   const timestamp = currentTime.toLocaleString();
+    const timestamp = currentTime.toLocaleString();
+    const UserEmail = user.email;
+    const UserName = user.displayName;
+    const UserPhoto = user.photoURL;
     const addPost = {
       title,
       imgUrl,
       category,
       shortDes,
       longDes,
-      timestamp
+      timestamp,
+      UserEmail,
+      UserName,
+      UserPhoto,
     };
-    console.log(addPost);
+    fetch("http://localhost:5000/api/v1/create-post", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(addPost),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        toast.success("Car added Successfully");
+        form.reset("");
+      });
   };
 
   return (
@@ -62,10 +77,12 @@ const AddBlog = () => {
                   <Label htmlFor="category" value="Select your Category" />
                 </div>
                 <Select name="category" id="countries" required>
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>France</option>
-                  <option>Germany</option>
+                  <option>Gadgets</option>
+                  <option>Tech</option>
+                  <option>Hacks</option>
+                  <option>Hacks</option>
+                  <option>ChatGpt</option>
+                  <option>Devops</option>
                 </Select>
               </div>
             </div>
