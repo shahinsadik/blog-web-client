@@ -33,19 +33,20 @@ const AllBlogs = () => {
     setSearchQuery(search);
   };
 
-  const filteredBlogPosts = blogPost.data.filter((post) => {
-    console.log(post.title);
-  
-    if (selectedCategory !== "All" && post.category !== selectedCategory) {
+  const filteredBlogPosts = blogPost?.data?.filter((post) => {
+
+    if (selectedCategory !== "All" && post?.category !== selectedCategory) {
       return false;
     }
 
   
-    if (searchQuery && post.title.toLowerCase().includes(searchQuery.toLowerCase())) {
-      return true;
+
+    if (searchQuery && !post.title.toLowerCase().includes(searchQuery.toLowerCase())) {
+      return false;
     }
-    
+
     return true;
+
   });
 
   if (isLoading) {
@@ -80,7 +81,9 @@ const AllBlogs = () => {
                     placeholder="Search now"
                     required
                   />
-                  <Button color="success" type="submit">Search</Button>
+                  <Button color="success" type="submit">
+                    Search
+                  </Button>
                 </div>
               </form>
             </div>
