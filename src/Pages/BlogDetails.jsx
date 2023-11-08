@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import {Link } from "react-router-dom";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Comments from "./Comments";
@@ -27,6 +28,7 @@ const BlogDetails = () => {
       </div>
     );
   }
+  
 
   return (
     <div className="grid lg:grid-cols-4 m-5 gap-5 ">
@@ -39,19 +41,28 @@ const BlogDetails = () => {
             <img src={postDetails.data.imgUrl} alt="" />
           </div>
           <div className="mx-10">
-            <div className="flex justify-between my-3">
+            <div className="flex justify-between items-center my-3">
+              <div>
               <span className="text-gray-700 font-semibold">
                 Posted: {postDetails.data.timestamp}
               </span>
-              <span className="bg-green-400 px-2 text-gray-700 font-semibold rounded-lg">
-                Category: {postDetails.data.category}
+              <div className="mt-3">
+              <span className="bg-green-400 p-2  text-gray-700 font-semibold rounded-lg">
+                 {postDetails.data.category}
               </span>
+              </div>
+              </div>
+              <Link  to={`/blog-details/update/${postDetails.data._id}`}
+            
+            className="rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+            Update Details
+          </Link>
             </div>
             <div>
               <h1 className="text-3xl text-center font-bold my-3">
                 {postDetails.data.title}
               </h1>
-              <p className="mb-3 text-xl font-semibold">
+              <p className="mb-3 text-xl font-semibold text-justify">
                 {postDetails.data.shortDes}
               </p>
               <p className="mb-3 text-sm text-justify text-gray-600 font-semibold">

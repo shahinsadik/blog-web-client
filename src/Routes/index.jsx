@@ -8,6 +8,7 @@ import Wishlist from './../Pages/Wishlist';
 import Login from './../Pages/Login';
 import Register from './../Pages/Register';
 import BlogDetails from './../Pages/BlogDetails';
+import UpdateBlog from './../Pages/UpdateBlog';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/blog-details/:id",
         element: <BlogDetails></BlogDetails>,
+      },
+      {
+        path: "/blog-details/update/:id",
+        element: <UpdateBlog></UpdateBlog>,
       },
       
     ],

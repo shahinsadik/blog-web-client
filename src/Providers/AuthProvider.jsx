@@ -48,7 +48,7 @@ const AuthProviders = ({ children }) => {
     const subscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       SetISLoading(false);
-      console.log(currentUser);
+     
     });
     return () => {
       return subscribe;
