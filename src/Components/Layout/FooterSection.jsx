@@ -1,6 +1,7 @@
 import { Banner, Button, Label, TextInput } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 import { Footer } from "flowbite-react";
+import { toast } from 'react-hot-toast';
 import {
   BsDribbble,
   BsFacebook,
@@ -9,8 +10,30 @@ import {
   BsTwitter,
 } from "react-icons/bs";
 const FooterSection = () => {
+  const handleSubmit = () =>{
+    toast.success("Thanks for Sign up for our newsletter")
+  }
   return (
-    <div >
+    <div>
+      <div className="flex justify-center items-center my-10 bg-gray-700 p-10">
+        <div>
+        <p className="text-2xl font-bold my-5 text-white"> Sign up for our newsletter</p>
+          <form
+            onSubmit={handleSubmit}
+            action="#"
+            className="flex w-full flex-col mb-10 items-center md:flex-row md:gap-x-3">
+            
+            <TextInput
+              id="email"
+              placeholder="Enter your email"
+              required
+              type="email"
+              className="w-full"
+            />
+            <Button type="submit">Subscribe</Button>
+          </form>
+        </div>
+      </div>
       <Footer container className="bg-gray-900">
         <div className="w-full ">
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
@@ -21,26 +44,9 @@ const FooterSection = () => {
                 alt=""
                 name="Web Blog"
               />
-              <Banner >
+              <Banner>
                 <div className="flex mt-5 rounded-xl w-full items-center justify-between border-b border-gray-200 bg-gray-400 p-4 dark:border-gray-600 dark:bg-gray-700">
-                  <div className="mx-auto flex w-full flex-shrink-0 items-center sm:w-auto">
-                    <form
-                      action="#"
-                      className="flex w-full flex-col items-center md:flex-row md:gap-x-3">
-                      <Label
-                        htmlFor="email"
-                        className="mb-2 mr-auto flex-shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400 md:m-0 md:mb-0">
-                        Sign up for our newsletter
-                      </Label>
-                      <TextInput
-                        id="email"
-                        placeholder="Enter your email"
-                        required
-                        type="email"
-                      />
-                      <Button type="submit">Subscribe</Button>
-                    </form>
-                  </div>
+                  <div className="mx-auto flex w-full flex-shrink-0 items-center sm:w-auto"></div>
                 </div>
               </Banner>
             </div>

@@ -6,10 +6,11 @@ const Home = () => {
  
     return (
         <div>
-      <h2>Home section</h2>   
+       
       <div><Banner></Banner></div>
-      <h2>Recent Post</h2> 
-      <div><RecentBlog>hello</RecentBlog></div>
+      
+      <div><RecentBlog></RecentBlog></div>
+      
 
 
 
@@ -18,4 +19,4 @@ const Home = () => {
     );
 };
 
-export default Home;Home
+export default Home;

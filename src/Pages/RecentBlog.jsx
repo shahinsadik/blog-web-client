@@ -3,10 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { Card } from "flowbite-react";
 import { toast } from 'react-hot-toast';
+import useAuth from './../Hooks/useAuth';
+import { Button } from 'flowbite-react';
 
 const RecentBlog = () => {
-  
+  const {user} = useAuth()
   const allBlogPost = async () => {
+
     try {
       const res = await axios.get("http://localhost:5000/api/v1/all-post");
       return res;
@@ -51,7 +54,7 @@ const RecentBlog = () => {
   
   return (
     <div>
-      <h2>Home section</h2>
+      <h2 className="text-5xl text-center font-bold mt-5">Recent Post</h2> 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {sortData.map((data) => (
           <Card
@@ -83,11 +86,18 @@ const RecentBlog = () => {
                 className="rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
                 Details
               </Link>
-              <button
+              <div>
+                {
+                  user ? 
+                  <button
                 onClick={()=>recentWhite({data})}
                 className="rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
                 Wishlist
               </button>
+                  :
+                   <Button disabled>Add Wishlist</Button>
+                }
+              </div>
             </div>
           </Card>
         ))}
