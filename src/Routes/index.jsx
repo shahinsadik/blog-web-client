@@ -1,15 +1,15 @@
 import App from "./../App";
 import { createBrowserRouter } from "react-router-dom";
-import Home from './../Pages/Home';
-import AddBlog from './../Pages/AddBlog';
-import AllBlogs from './../Pages/AllBlogs';
-import FeaturedBlogs from './../Pages/FeaturedBlogs';
-import Wishlist from './../Pages/Wishlist';
-import Login from './../Pages/Login';
-import Register from './../Pages/Register';
-import BlogDetails from './../Pages/BlogDetails';
-import UpdateBlog from './../Pages/UpdateBlog';
-import PrivetRoutes from './PrivetRoutes';
+import Home from "./../Pages/Home";
+import AddBlog from "./../Pages/AddBlog";
+import AllBlogs from "./../Pages/AllBlogs";
+import FeaturedBlogs from "./../Pages/FeaturedBlogs";
+import Wishlist from "./../Pages/Wishlist";
+import Login from "./../Pages/Login";
+import Register from "./../Pages/Register";
+import BlogDetails from "./../Pages/BlogDetails";
+import UpdateBlog from "./../Pages/UpdateBlog";
+import PrivetRoutes from "./PrivetRoutes";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,7 +21,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addBlog",
-        element: <PrivetRoutes><AddBlog></AddBlog></PrivetRoutes>,
+        element: (
+          <PrivetRoutes>
+            <AddBlog></AddBlog>
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/allBlogs",
@@ -33,7 +37,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/wishlist",
-        element: <PrivetRoutes><Wishlist></Wishlist></PrivetRoutes>,
+        element: (
+          <PrivetRoutes>
+            <Wishlist></Wishlist>
+          </PrivetRoutes>
+        ),
       },
       {
         path: "/login",
@@ -49,9 +57,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/blog-details/update/:id",
-        element: <PrivetRoutes><UpdateBlog></UpdateBlog></PrivetRoutes>,
+        element: (
+          <PrivetRoutes>
+            <UpdateBlog></UpdateBlog>
+          </PrivetRoutes>
+        ),
       },
-      
     ],
   },
 ]);

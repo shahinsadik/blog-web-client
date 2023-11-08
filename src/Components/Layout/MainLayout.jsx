@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link, NavLink } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import useAuth from "./../../Hooks/useAuth";
@@ -16,52 +16,52 @@ const MainLayout = () => {
   };
   const links = (
     <>
-      <Navbar.Collapse>
-        <Navbar.Link
+      <Navbar.Collapse >
+        <NavLink 
           className={({ isActive }) =>
             isActive
-              ? " font-semibold bg-red-600"
-              : " font-semibold text-white"
+            ? " font-semibold bg-green-500 p-2 rounded-lg "
+            : " font-semibold  bg-[#0e7490] p-2 rounded-lg" 
           }
-          href="/">
+          to="/">
           Home
-        </Navbar.Link>
-        <Navbar.Link
+        </NavLink>
+        <NavLink 
           className={({ isActive }) =>
             isActive
-              ? " font-semibold btn btn-primary btn-sm"
-              : " font-semibold btn btn-ghost btn-sm"
+            ? " font-semibold bg-green-500 p-2 rounded-lg "
+            : " font-semibold  bg-[#0e7490] p-2 rounded-lg" 
           }
-          href="/addBlog">
+          to="/addBlog">
           Add Blog
-        </Navbar.Link>
-        <Navbar.Link
+        </NavLink>
+        <NavLink 
           className={({ isActive }) =>
             isActive
-              ? " font-semibold btn btn-primary btn-sm"
-              : " font-semibold btn btn-ghost btn-sm"
+            ? " font-semibold bg-green-500 p-2 rounded-lg "
+            : " font-semibold  bg-[#0e7490] p-2 rounded-lg" 
           }
-          href="/allBlogs">
+          to="/allBlogs">
           All Blogs
-        </Navbar.Link>
-        <Navbar.Link
+        </NavLink>
+        <NavLink 
           className={({ isActive }) =>
             isActive
-              ? " font-semibold btn btn-primary btn-sm"
-              : " font-semibold btn btn-ghost btn-sm"
+            ? " font-semibold bg-green-500 p-2 rounded-lg "
+            : " font-semibold  bg-[#0e7490] p-2 rounded-lg" 
           }
-          href="/featuredBlogs">
+          to="/featuredBlogs">
           Featured Blogs
-        </Navbar.Link>
-        <Navbar.Link
+        </NavLink>
+        <NavLink 
           className={({ isActive }) =>
             isActive
-              ? " font-semibold btn btn-primary btn-sm"
-              : " font-semibold btn btn-ghost btn-sm"
+            ? " font-semibold bg-green-500 p-2 rounded-lg "
+            : " font-semibold  bg-[#0e7490] p-2 rounded-lg" 
           }
-          href="/wishlist">
+          to="/wishlist">
           Wishlist{" "}
-        </Navbar.Link>
+        </NavLink>
       </Navbar.Collapse>
     </>
   );
@@ -70,7 +70,7 @@ const MainLayout = () => {
       <Navbar className="bg-[#0e7490]" fluid rounded>
         <Navbar.Brand href="/">
           <img
-            src="https://w7.pngwing.com/pngs/711/22/png-transparent-blogger-social-media-logo-social-media-logo-social-brand-3d-icon-thumbnail.png"
+            src="https://logo.com/image-cdn/images/kts928pd/production/a195406f1cbf3510e8901abf512267d4a80d2230-359x359.png?w=1080&q=72"
             className="mr-3 h-6 sm:h-9"
             alt="Web Blog"
           />

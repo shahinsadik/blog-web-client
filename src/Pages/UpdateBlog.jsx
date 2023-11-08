@@ -2,14 +2,12 @@ import React from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Button, Label, TextInput, Textarea, Select } from "flowbite-react";
-
 import { toast } from "react-hot-toast";
 import useAuth from "./../Hooks/useAuth";
 import { useParams } from "react-router-dom";
 
 const UpdateBlog = () => {
   const { id } = useParams();
-  console.log(id);
   const { user } = useAuth();
 
   const handleBlogUpdate = (e) => {
@@ -28,7 +26,8 @@ const UpdateBlog = () => {
       shortDes,
       longDes,
     };
-    fetch(`http://localhost:5000/api/v1/all-post/${singleData._id}`, {
+
+    fetch(`http://localhost:5000/api/v1/all-post/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -36,10 +35,12 @@ const UpdateBlog = () => {
       body: JSON.stringify(updatePost),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log("recent data", data);
+      .then(() => {
+          toast.success("Update Successfully");
+          form.value.reset()
       });
   };
+
   const updateData = async () => {
     try {
       const res = await axios.get("http://localhost:5000/api/v1/all-post");
@@ -53,7 +54,6 @@ const UpdateBlog = () => {
     queryKey: ["updatePostData"],
     queryFn: updateData,
   });
-  console.log(updatePostData);
 
   if (isLoading) {
     return (
@@ -62,10 +62,11 @@ const UpdateBlog = () => {
       </div>
     );
   }
+
   const filteredUpdate = updatePostData.data.find(
-    (comment) => comment?._id == id
+    (post) => post._id === id
   );
-  console.log(filteredUpdate?.UserEmail);
+
   return (
     <div>
       <div className="lg:my-10 lg:mx-20 mx-5 my-5 ">
@@ -78,7 +79,7 @@ const UpdateBlog = () => {
                     <Label htmlFor="title" value="Title" />
                   </div>
                   <TextInput
-                    defaultValue={updatePostData?.title}
+                    defaultValue={filteredUpdate?.title}
                     name="title"
                     type="text"
                   />
@@ -88,8 +89,7 @@ const UpdateBlog = () => {
                     <Label htmlFor="imgUrl" value="Post Photo Url" />
                   </div>
                   <TextInput
-                    defaultValue={handleBlogUpdate?.imgUrl}
-                    id=""
+                    defaultValue={filteredUpdate?.imgUrl}
                     name="imgUrl"
                     type="text"
                   />
@@ -98,24 +98,22 @@ const UpdateBlog = () => {
                   <div className="mb-2 block">
                     <Label htmlFor="category" value="Select your Category" />
                   </div>
-                  <Select name="category" id="countries" required>
+                  <Select name="category" id="categories" required>
                     <option>Gadgets</option>
                     <option>Tech</option>
-                    <option>Hacks</option>
                     <option>Hacks</option>
                     <option>ChatGpt</option>
                     <option>Devops</option>
                   </Select>
                 </div>
               </div>
-
               <div className="w-full">
                 <div className="mb-2 block">
-                  <Label htmlFor="comment" value="Short Description" />
+                  <Label htmlFor="shortDes" value="Short Description" />
                 </div>
                 <Textarea
-                  defaultValue={handleBlogUpdate?.shortDes}
-                  id="comment"
+                  defaultValue={filteredUpdate?.shortDes}
+                  id="shortDes"
                   placeholder="Short Description"
                   name="shortDes"
                   required
@@ -124,23 +122,22 @@ const UpdateBlog = () => {
               </div>
               <div className="w-full">
                 <div className="mb-2 block">
-                  <Label htmlFor="comment" value="Long Description" />
+                  <Label htmlFor="longDes" value="Long Description" />
                 </div>
                 <Textarea
-                  defaultValue={handleBlogUpdate?.longDes}
-                  id="comment"
+                  defaultValue={filteredUpdate?.longDes}
+                  id="longDes"
                   placeholder="Long description"
                   name="longDes"
                   required
                   rows={4}
                 />
               </div>
-
               <Button type="submit">Update Post</Button>
             </form>
           </div>
           <div className="lg:col-span-1 bg-[#0e7490] p-10">
-            <h1 className="text-3xl font-bold text-center">Write your post</h1>
+            <h1 className="text-3xl font-bold text-center">Update your Post</h1>
             <p className=" mt-5 text-justify">
               In this example, we have a BlogPost component that displays the
               title of the blog post, an image with a caption, and leaves space
