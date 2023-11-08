@@ -35,7 +35,7 @@ const Comments = ({ id }) => {
         e.target.reset("");
       });
   };
-  const usersCOmment = async () => {
+  const postDetails = async () => {
     try {
       const res = await axios.get("http://localhost:5000/api/v1/all-post");
       return res;
@@ -44,13 +44,11 @@ const Comments = ({ id }) => {
     }
   };
 
-  const { isLoading, data: commentUser } = useQuery({
-    queryKey: ["commentUser"],
-    queryFn: usersCOmment,
+  const { isLoading, data: allPost } = useQuery({
+    queryKey: ["allPost"],
+    queryFn: postDetails,
   });
-  console.log("Blog post user email", commentUser?.data.UserEmail);
-  console.log("Blog post user email", commentUser?.data);
-  console.log("Blog post user email", user?.email);
+  
 
   if (isLoading) {
     return (
@@ -59,17 +57,10 @@ const Comments = ({ id }) => {
       </div>
     );
   }
-  const filteredComments = commentUser.data.find(
+  const filteredComments = allPost.data.find(
     (comment) => comment?.UserEmail == user?.email
   );
 
-  // if (filteredComments.length === 0) {
-  //   return (
-  //     <div>
-  //       <h1>No comments found</h1>
-  //     </div>
-  //   );
-  // }
   return (
     <div>
       <div>
