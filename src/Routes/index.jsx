@@ -9,6 +9,7 @@ import Login from './../Pages/Login';
 import Register from './../Pages/Register';
 import BlogDetails from './../Pages/BlogDetails';
 import UpdateBlog from './../Pages/UpdateBlog';
+import PrivetRoutes from './PrivetRoutes';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/addBlog",
-        element: <AddBlog></AddBlog>,
+        element: <PrivetRoutes><AddBlog></AddBlog></PrivetRoutes>,
       },
       {
         path: "/allBlogs",
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/wishlist",
-        element: <Wishlist></Wishlist>,
+        element: <PrivetRoutes><Wishlist></Wishlist></PrivetRoutes>,
       },
       {
         path: "/login",
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/blog-details/update/:id",
-        element: <UpdateBlog></UpdateBlog>,
+        element: <PrivetRoutes><UpdateBlog></UpdateBlog></PrivetRoutes>,
       },
       
     ],
