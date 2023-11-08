@@ -10,7 +10,7 @@ Clear and concise layout to guide users through the donation process.
 Display real-time progress toward fundraising goals.
 Eliminate the navigation bar. 
 
-heir attention is solely on your donation button
+Keep your visitor’s attention focused by streamlining their experience so that their attention is solely on your donation button
 🔗 Links
 https://donationc/
 
