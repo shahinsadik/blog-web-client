@@ -1,22 +1,31 @@
 import React from "react";
 import { Card } from "flowbite-react";
+import { motion } from 'framer-motion';
 const MemberShip = () => {
   return (
     <div className="my-10 mx-5">
       <h1 className="text-4xl font-bold text-center text-cyan-700 my-5">Paid Membership </h1>
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
-      <div className="w-full overflow-auto shadow-2xl">
+      <motion.div
+      whileHover={{ scale: 1.1, transition: { duration: 0.2 } }} 
+      whileTap={{ scale: 0.1, transition: { duration: 0.3 } }} 
+      transition={{ duration: 1 }}
+      className="w-full overflow-auto shadow-2xl">
         <a>
-          <h5 className="text-2xl bg-cyan-900 p-2  font-bold tracking-tight text-white text-center rounded-t-lg dark:text-white">
+          <h1
+          
+          className="text-2xl bg-cyan-900 p-2  font-bold tracking-tight text-white text-center rounded-t-lg dark:text-white">
             Elite Membership
-          </h5>
+          </h1>
         </a>
         <div className="mb-1 mt-2 p-3 ">
-          <h3 className="font-sm">
+          <h1
+          
+          className="font-sm">
             Get Yearly Membership. Payment options. Choose your preferred
             EliteClub membership subscription! You can pay monthly or annually
             for your VIP membership!
-          </h3>
+          </h1>
 
           <div className="space-y-3 text-center mt-3 ">
             <span className="text-2xl font-bold bg-cyan-900 text-white px-2 rounded-md">
@@ -39,8 +48,12 @@ const MemberShip = () => {
             Purse now
           </a>
         </div>
-      </div>
-      <div className="w-full overflow-auto shadow-2xl">
+      </motion.div>
+      <motion.div
+      
+      whileHover={{ scale: 1.1, transition: { duration: 0.2 } }} 
+          whileTap={{ scale: 0.1, transition: { duration: 0.3 } }} 
+          transition={{ duration: 1 }}className="w-full overflow-auto shadow-2xl">
         <a>
           <h5 className="text-2xl bg-cyan-700 p-2  font-bold tracking-tight text-white text-center rounded-t-lg dark:text-white">
             Pro Membership
@@ -74,8 +87,12 @@ const MemberShip = () => {
             Purse now
           </a>
         </div>
-      </div>
-      <div className="w-full overflow-auto shadow-2xl">
+      </motion.div>
+      <motion.div
+      whileHover={{ scale: 1.1, transition: { duration: 0.2 } }} 
+      whileTap={{ scale: 0.1, transition: { duration: 0.3 } }} 
+      transition={{ duration: 1 }}
+      className="w-full overflow-auto shadow-2xl">
         <a>
           <h5 className="text-2xl bg-cyan-500 p-2  font-bold tracking-tight text-white text-center rounded-t-lg dark:text-white">
             Free Membership
@@ -109,7 +126,7 @@ const MemberShip = () => {
             Purse now
           </a>
         </div>
-      </div>
+      </motion.div>
       </div>
     </div>
   );

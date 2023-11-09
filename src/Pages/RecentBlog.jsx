@@ -58,9 +58,8 @@ const RecentBlog = () => {
       </h1>
       <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto  gap-5 justify-center ">
         {sortData.map((data) => (
-          <motion.div initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          <motion.div whileHover={{ scale: 1.1, transition: { duration: 0.2 } }} 
+          whileTap={{ scale: 0.1, transition: { duration: 0.3 } }} 
           transition={{ duration: 1 }} key={data?._id}>
             <Card
             
