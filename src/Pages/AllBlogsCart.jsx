@@ -1,13 +1,15 @@
 import {Link } from "react-router-dom";
-import { Card } from "flowbite-react";
+import { Card, Button } from "flowbite-react";
 import { toast } from 'react-hot-toast';
+import useAuth from './../Hooks/useAuth';
 
 const AllBlogsCart = ({ data }) => {
+  const {user} = useAuth()
   const { title, imgUrl, category, shortDes, longDes, _id, timestamp,UserEmail,UserName,UserPhoto } = data;
   // const data= {_id,title, imgUrl, category, shortDes, longDes,timestamp,UserEmail,UserName,UserPhoto}
  const handleWhiteList =(data)=>{
   
-  fetch("http://localhost:5000/api/v1/crate-wishList", {
+  fetch("https://server-web-blog.vercel.app/api/v1/crate-wishList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,16 +43,21 @@ const AllBlogsCart = ({ data }) => {
         
         <span className=" text-gray-900 dark:text-white">{shortDes?.slice(0, 200)}</span>
         <div className="flex items-center justify-between">
-          <Link to={`/blog-details/${_id}`}
+            <Link to={`/blog-details/${_id}`}
             href="#"
             className="rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
             Details
           </Link>
+          {
+            user?.email ?
           <Link 
             onClick={()=>handleWhiteList({data})}
             className="rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
             Wishlist
           </Link>
+          :
+          <Button disabled>Add Wishlist</Button>
+          }
         </div>
       </Card>
     </div>

@@ -11,7 +11,7 @@ const WishListCart = ({list, postId}) => {
 
     const handleRemove = async (id) => {
         try {
-          const res = await axios.delete(`http://localhost:5000/api/v1/all-wishList/${id}`);
+          const res = await axios.delete(`https://server-web-blog.vercel.app/api/v1/all-wishList/${id}`);
           // const remaining = wish?.filter((book) => book._id !== id);
           // (remaining);
           // return res;

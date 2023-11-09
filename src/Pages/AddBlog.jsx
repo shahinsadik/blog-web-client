@@ -29,7 +29,7 @@ const AddBlog = () => {
       UserName,
       UserPhoto,
     };
-    fetch("http://localhost:5000/api/v1/create-post", {
+    fetch("https://server-web-blog.vercel.app/api/v1/create-post", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const AddBlog = () => {
                 <Select name="category" id="countries" required>
                   <option>Gadgets</option>
                   <option>Tech</option>
-                  <option>Hacks</option>
+                  <option>Software</option>
                   <option>Hacks</option>
                   <option>ChatGpt</option>
                   <option>Devops</option>

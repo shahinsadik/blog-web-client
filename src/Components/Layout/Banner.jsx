@@ -2,7 +2,7 @@ import React from 'react';
 import { Carousel } from 'flowbite-react';
 const Banner = () => {
     return (
-        <div>
+        <div className="my-10">
             <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel pauseOnHover>
         <img src="https://i0.wp.com/erraticus.co/wp-content/uploads/2021/10/This-Is-Technopoly-Technocracy-Erraticus.png?zoom=2&resize=800%2C445&ssl=1" alt="..." />

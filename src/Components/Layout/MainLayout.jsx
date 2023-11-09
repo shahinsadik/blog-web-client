@@ -2,6 +2,7 @@ import {Link, NavLink } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import useAuth from "./../../Hooks/useAuth";
+import logo from "../../../public/logo.png";
 const MainLayout = () => {
   const { user, logOut } = useAuth();
 
@@ -20,8 +21,8 @@ const MainLayout = () => {
         <NavLink 
           className={({ isActive }) =>
             isActive
-            ? " font-semibold bg-green-500 p-2 rounded-lg "
-            : " font-semibold  bg-[#0e7490] p-2 rounded-lg" 
+            ? " font-semibold bg-cyan-900 p-2 rounded-lg text-white"
+            : " font-semibold   p-2 rounded-lg text-white" 
           }
           to="/">
           Home
@@ -29,8 +30,8 @@ const MainLayout = () => {
         <NavLink 
           className={({ isActive }) =>
             isActive
-            ? " font-semibold bg-green-500 p-2 rounded-lg "
-            : " font-semibold  bg-[#0e7490] p-2 rounded-lg" 
+            ? " font-semibold bg-cyan-900 p-2 rounded-lg text-white "
+            : " font-semibold   p-2 rounded-lg text-white" 
           }
           to="/addBlog">
           Add Blog
@@ -38,8 +39,8 @@ const MainLayout = () => {
         <NavLink 
           className={({ isActive }) =>
             isActive
-            ? " font-semibold bg-green-500 p-2 rounded-lg "
-            : " font-semibold  bg-[#0e7490] p-2 rounded-lg" 
+            ? " font-semibold bg-cyan-900 p-2 rounded-lg text-white"
+            : " font-semibold   p-2 rounded-lg text-white" 
           }
           to="/allBlogs">
           All Blogs
@@ -47,8 +48,8 @@ const MainLayout = () => {
         <NavLink 
           className={({ isActive }) =>
             isActive
-            ? " font-semibold bg-green-500 p-2 rounded-lg "
-            : " font-semibold  bg-[#0e7490] p-2 rounded-lg" 
+            ? " font-semibold bg-cyan-900 p-2 rounded-lg text-white"
+            : " font-semibold   p-2 rounded-lg text-white" 
           }
           to="/featuredBlogs">
           Featured Blogs
@@ -56,8 +57,8 @@ const MainLayout = () => {
         <NavLink 
           className={({ isActive }) =>
             isActive
-            ? " font-semibold bg-green-500 p-2 rounded-lg "
-            : " font-semibold  bg-[#0e7490] p-2 rounded-lg" 
+            ? " font-semibold bg-cyan-900 p-2 rounded-lg text-white"
+            : " font-semibold   p-2 rounded-lg text-white" 
           }
           to="/wishlist">
           Wishlist{" "}
@@ -68,15 +69,15 @@ const MainLayout = () => {
   return (
     <div>
       <Navbar className="bg-[#0e7490]" fluid rounded>
-        <Navbar.Brand href="/">
+        <Navbar.Brand >
           <img
-            src="https://logo.com/image-cdn/images/kts928pd/production/a195406f1cbf3510e8901abf512267d4a80d2230-359x359.png?w=1080&q=72"
-            className="mr-3 h-6 sm:h-9"
+            src={logo}
+            className=" h-6 sm:h-9"
             alt="Web Blog"
           />
           
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            web Blog
+          <span className="self-center whitespace-nowrap text-2xl font-black text-red-600">
+            TechBlog
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2">
@@ -87,9 +88,9 @@ const MainLayout = () => {
               label={
                 user.photoURL  ? <Avatar alt="User settings" img={user?.photoURL} rounded /> : <Avatar alt="User settings" img="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_640.png" rounded />
               }>
-              <Dropdown.Header>
-                <span className="block text-sm font-bold">{user?.displayName}</span>
-                <span className="block truncate text-sm font-medium">
+              <Dropdown.Header className="text-white">
+                <span className="block text-sm font-bold text-white">{user?.displayName}</span>
+                <span className="block truncate text-sm font-medium ">
                   {user?.email}
                 </span>
               </Dropdown.Header>
@@ -105,11 +106,11 @@ const MainLayout = () => {
               </Dropdown.Item>
             </Dropdown>
           ) : (
-            <div>
-              <Navbar.Collapse>
-              <Navbar.Link  href="/login">Login</Navbar.Link>
-              <Navbar.Link href="/register">Sign Up</Navbar.Link>
-              </Navbar.Collapse>
+            <div className="flex justify-center items-center gap-3">
+              
+              <Link className=" font-semibold bg-[#38b29b] p-2 rounded-lg text-white"  to="/login">Login</Link>
+              <Link className="font-semibold bg-[#38b29b] p-2 rounded-lg text-white" to="/register ">Sign Up</Link>
+              
               
             </div>
           )}

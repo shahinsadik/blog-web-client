@@ -22,7 +22,7 @@ const Comments = ({ id }) => {
       CommentUserPhoto,
     };
     // console.log(inputComment);
-    fetch("http://localhost:5000/api/v1/create-comment", {
+    fetch("https://server-web-blog.vercel.app/api/v1/create-comment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const Comments = ({ id }) => {
   };
   const postDetails = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/all-post");
+      const res = await axios.get("https://server-web-blog.vercel.app/api/v1/all-post");
       return res;
     } catch (error) {
       console.log(error);
@@ -69,40 +69,42 @@ const Comments = ({ id }) => {
             Review & Comment
           </h1>
 
-          {filteredComments ? (
-            <form  onSubmit={handleComment} className="">
-              <div className="mb-2 block">
-                <Label htmlFor="comment" value="Comment is Disable" />
-              </div>
-              <Textarea
-              disabled
-                id="comment"
-                placeholder="Own post not allowed to be comment "
-                name="commentTitle"
-                required
-                rows={3}
-              />
-              <div className="mt-3">
-                <Button disabled type="submit">Comment Now </Button>
-              </div>
-            </form>
-          ) : (
-            <form onSubmit={handleComment} className="">
-              <div className="mb-2 block">
-                <Label htmlFor="comment" value="Write Your Comment" />
-              </div>
-              <Textarea
-                id="comment"
-                placeholder="Write Your Comment"
-                name="commentTitle"
-                required
-                rows={3}
-              />
-              <div className="mt-3">
-                <Button type="submit">Comment Now </Button>
-              </div>
-            </form>
-          )}
+          {user?.email ? (
+            filteredComments ? (
+              <form onSubmit={handleComment} className="">
+                <div className="mb-2 block">
+                  <Label htmlFor="comment" value="Comment is Disable" />
+                </div>
+                <Textarea
+                  disabled
+                  id="comment"
+                  placeholder="Own post not allowed to be commented"
+                  name="commentTitle"
+                  required
+                  rows={3}
+                />
+                <div className="mt-3">
+                  <Button disabled type="submit">Comment Now </Button>
+                </div>
+              </form>
+            ) : (
+              <form onSubmit={handleComment} className="">
+                <div className="mb-2 block">
+                  <Label htmlFor="comment" value="Write Your Comment" />
+                </div>
+                <Textarea
+                  id="comment"
+                  placeholder="Write Your Comment"
+                  name="commentTitle"
+                  required
+                  rows={3}
+                />
+                <div className="mt-3">
+                  <Button type="submit">Comment Now </Button>
+                </div>
+              </form>
+            )
+          ) : null}
           <div className="flex items-center justify-center"></div>
           <div>
             <CommentDetails id={id}></CommentDetails>

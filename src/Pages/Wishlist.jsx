@@ -8,7 +8,7 @@ const Wishlist = () => {
   const { user } = useAuth();
   const wishList = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/all-wishList");
+      const res = await axios.get("https://server-web-blog.vercel.app/api/v1/all-wishList");
       return res;
     } catch (error) {
       console.log(error);

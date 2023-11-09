@@ -27,7 +27,7 @@ const UpdateBlog = () => {
       longDes,
     };
 
-    fetch(`http://localhost:5000/api/v1/all-post/${id}`, {
+    fetch(`https://server-web-blog.vercel.app/api/v1/all-post/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const UpdateBlog = () => {
 
   const updateData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/all-post");
+      const res = await axios.get("https://server-web-blog.vercel.app/api/v1/all-post");
       return res;
     } catch (error) {
       console.log(error);

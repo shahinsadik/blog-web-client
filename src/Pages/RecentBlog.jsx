@@ -11,7 +11,7 @@ const RecentBlog = () => {
   const allBlogPost = async () => {
 
     try {
-      const res = await axios.get("http://localhost:5000/api/v1/all-post");
+      const res = await axios.get("https://server-web-blog.vercel.app/api/v1/all-post");
       return res;
     } catch (error) {
       console.log(error);
@@ -36,7 +36,7 @@ const RecentBlog = () => {
     .slice(0, 6);
     
     const recentWhite =(data)=>{
-    fetch("http://localhost:5000/api/v1/crate-wishList", {
+    fetch("https://server-web-blog.vercel.app/api/v1/crate-wishList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,13 +53,13 @@ const RecentBlog = () => {
   }
   
   return (
-    <div>
-      <h2 className="text-5xl text-center font-bold mt-5">Recent Post</h2> 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="mx-5">
+      <h1 className="text-3xl text-center font-bold my-10 text-[#0e7490]">Recent Blog Post</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto  gap-5 justify-center ">
         {sortData.map((data) => (
           <Card
             key={data?._id}
-            className="max-w-sm my-10"
+            className="w-full "
             imgAlt="Apple Watch Series 7 in colors pink, silver, and black"
             imgSrc={data?.imgUrl}>
             <div className=" flex justify-between">

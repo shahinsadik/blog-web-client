@@ -10,10 +10,12 @@ import Register from "./../Pages/Register";
 import BlogDetails from "./../Pages/BlogDetails";
 import UpdateBlog from "./../Pages/UpdateBlog";
 import PrivetRoutes from "./PrivetRoutes";
+import Errorpage from './../Pages/Errorpage';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <Errorpage></Errorpage>,
     children: [
       {
         index: true,

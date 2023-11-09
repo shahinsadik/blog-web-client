@@ -11,7 +11,7 @@ const BlogDetails = () => {
   const singlePostDetails = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/v1/all-post/${id}`
+        `https://server-web-blog.vercel.app/api/v1/all-post/${id}`
       );
       return res;
     } catch (error) {
@@ -58,11 +58,11 @@ const BlogDetails = () => {
                 {
                   postDetails?.data?.UserEmail === user?.email ? <div><Link
                   to={`/blog-details/update/${postDetails.data._id}`}
-                  className="rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                  className="rounded-lg mt-2 bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
                   Update Details
                 </Link></div>
                   :
-                  <div className="disabled"><Button disabled>Update Details</Button>;</div>
+                  <div className="disabled mt-2"><Button disabled>Update Details</Button>;</div>
                 }
               </div>
             </div>

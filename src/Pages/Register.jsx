@@ -2,23 +2,35 @@ import { Button, Card, Label, TextInput } from "flowbite-react";
 import register from "../../public/register.svg";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-
 import useAuth from "./../Hooks/useAuth";
 import { toast } from "react-hot-toast";
+
 const Register = () => {
-  const { profileUpdate } = useAuth();
-  const { crateUser } = useAuth();
+  const { profileUpdate, crateUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");
-  console.log(email, password, name, photo);
   const navigate = useNavigate();
+
   const handleRegister = async (e) => {
     e.preventDefault();
     const toastId = toast.loading("Registering....");
 
     try {
+      if (password.length < 6) {
+        throw new Error("Password must be at least 6 characters long");
+      }
+      if (!/[A-Z]/.test(password)) {
+        throw new Error("Password must contain at least one capital letter");
+      }
+      if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        throw new Error("Password must contain at least one special character");
+      }
+      if (!/\d/.test(password)) {
+        throw new Error("Password must contain at least one numeric character");
+      }
+
       await crateUser(email, password, name, photo);
       toast.success("Register successfully", { id: toastId });
       profileUpdate(name, photo);
@@ -27,6 +39,7 @@ const Register = () => {
       toast.error(err.message, { id: toastId });
     }
   };
+
   return (
     <div>
       <div className="bg-[#0e7490] py-10">
@@ -96,6 +109,7 @@ const Register = () => {
                 Login Now
               </Link>
             </p>
+            
           </Card>
           <div>
             <img src={register} alt="" />

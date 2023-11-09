@@ -1,7 +1,7 @@
 import { Banner, Button, Label, TextInput } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 import { Footer } from "flowbite-react";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 import {
   BsDribbble,
   BsFacebook,
@@ -10,27 +10,58 @@ import {
   BsTwitter,
 } from "react-icons/bs";
 const FooterSection = () => {
-  const handleSubmit = () =>{
-    toast.success("Thanks for Sign up for our newsletter")
-  }
+  const handleSubmit = () => {
+    toast.success("Thank you for subscribing to our newsletter");
+  };
   return (
     <div>
-      <div className="flex justify-center items-center my-10 bg-gray-700 p-10">
+      <div className="grid lg:grid-cols-2 gap-5 grid-cols-1 justify-center items-center my-10 bg-gray-700 ">
         <div>
-        <p className="text-2xl font-bold my-5 text-white"> Sign up for our newsletter</p>
+          <img
+            src="https://i0.wp.com/anythingnotary.com/wp-content/uploads/2023/01/businessman-internet-continents-2682712.jpg?w=1280&ssl=1"
+            alt=""
+          />
+        </div>
+        <div>
           <form
             onSubmit={handleSubmit}
-            action="#"
-            className="flex w-full flex-col mb-10 items-center md:flex-row md:gap-x-3">
-            
-            <TextInput
-              id="email"
-              placeholder="Enter your email"
-              required
-              type="email"
-              className="w-full"
-            />
-            <Button type="submit">Subscribe</Button>
+            className=" mx-10 flex-col mb-10 items-center md:flex-row md:gap-x-3">
+          <p className="text-2xl text-center font-bold my-5 text-white">
+            {" "}
+            Stay in the know !
+          </p>
+          <p className="text-xl font-semibold my-3 text-center text-white">
+            {" "}
+            Subscribe our newsletter and get all updates...
+          </p>
+            <div className="flex w-full gap-3">
+              <TextInput
+                id="email"
+                placeholder="First Name"
+                required
+                type="text"
+                className="w-full"
+              />
+
+              <TextInput
+                id="email"
+                placeholder="Last Name"
+                required
+                type="text"
+                className="w-full"
+              />
+            </div>
+            <div className="flex gap-3 mt-2">
+              <TextInput
+                id="email"
+                placeholder="Enter your email"
+                required
+                type="email"
+                className="w-full"
+              />
+
+              <Button type="submit">Subscribe</Button>
+            </div>
           </form>
         </div>
       </div>
