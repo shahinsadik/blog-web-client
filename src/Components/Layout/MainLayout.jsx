@@ -30,6 +30,24 @@ const MainLayout = () => {
         <NavLink 
           className={({ isActive }) =>
             isActive
+            ? " font-semibold bg-cyan-900 p-2 rounded-lg text-white"
+            : " font-semibold   p-2 rounded-lg text-white" 
+          }
+          to="/contact">
+          Contact
+        </NavLink>
+        <NavLink 
+          className={({ isActive }) =>
+            isActive
+            ? " font-semibold bg-cyan-900 p-2 rounded-lg text-white"
+            : " font-semibold   p-2 rounded-lg text-white" 
+          }
+          to="/about">
+          About
+        </NavLink>
+        <NavLink 
+          className={({ isActive }) =>
+            isActive
             ? " font-semibold bg-cyan-900 p-2 rounded-lg text-white "
             : " font-semibold   p-2 rounded-lg text-white" 
           }

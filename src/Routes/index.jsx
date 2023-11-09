@@ -11,6 +11,8 @@ import BlogDetails from "./../Pages/BlogDetails";
 import UpdateBlog from "./../Pages/UpdateBlog";
 import PrivetRoutes from "./PrivetRoutes";
 import Errorpage from './../Pages/Errorpage';
+import Contact from './../Pages/Contact';
+import About from './../Pages/About';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -56,6 +58,14 @@ const router = createBrowserRouter([
       {
         path: "/blog-details/:id",
         element: <BlogDetails></BlogDetails>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
+      {
+        path: "/about",
+        element: <About></About>,
       },
       {
         path: "/blog-details/update/:id",
