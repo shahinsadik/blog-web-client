@@ -2,16 +2,18 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { Card } from "flowbite-react";
-import { toast } from 'react-hot-toast';
-import useAuth from './../Hooks/useAuth';
-import { Button } from 'flowbite-react';
+import { toast } from "react-hot-toast";
+import useAuth from "./../Hooks/useAuth";
+import { Button } from "flowbite-react";
+import { motion } from "framer-motion";
 
 const RecentBlog = () => {
-  const {user} = useAuth()
+  const { user } = useAuth();
   const allBlogPost = async () => {
-
     try {
-      const res = await axios.get("https://server-web-blog.vercel.app/api/v1/all-post");
+      const res = await axios.get(
+        "https://server-web-blog.vercel.app/api/v1/all-post"
+      );
       return res;
     } catch (error) {
       console.log(error);
@@ -34,31 +36,34 @@ const RecentBlog = () => {
   const sortData = [...recentPost.data]
     .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
     .slice(0, 6);
-    
-    const recentWhite =(data)=>{
+
+  const recentWhite = (data) => {
     fetch("https://server-web-blog.vercel.app/api/v1/crate-wishList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-      
     })
       .then((res) => res.json())
       .then(() => {
         toast.success("Added your wishlist successfully");
-        
       });
-    
-  }
-  
+  };
+
   return (
     <div className="mx-5">
-      <h1 className="text-3xl text-center font-bold my-10 text-[#0e7490]">Recent Blog Post</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto  gap-5 justify-center ">
+      <h1 className="text-3xl text-center font-bold my-10 text-[#0e7490]">
+        Recent Blog Post
+      </h1>
+      <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto  gap-5 justify-center ">
         {sortData.map((data) => (
-          <Card
-            key={data?._id}
+          <motion.div initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }} key={data?._id}>
+            <Card
+            
             className="w-full "
             imgAlt="Apple Watch Series 7 in colors pink, silver, and black"
             imgSrc={data?.imgUrl}>
@@ -82,24 +87,23 @@ const RecentBlog = () => {
             <div className="flex items-center justify-between">
               <Link
                 to={`/blog-details/${data._id}`}
-                
                 className="rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
                 Details
               </Link>
               <div>
-                {
-                  user ? 
+                {user ? (
                   <button
-                onClick={()=>recentWhite({data})}
-                className="rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
-                Wishlist
-              </button>
-                  :
-                   <Button disabled>Add Wishlist</Button>
-                }
+                    onClick={() => recentWhite({ data })}
+                    className="rounded-lg bg-cyan-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800">
+                    Wishlist
+                  </button>
+                ) : (
+                  <Button disabled>Add Wishlist</Button>
+                )}
               </div>
             </div>
           </Card>
+          </motion.div>
         ))}
       </div>
     </div>
