@@ -44,4 +44,4 @@ Stay in the loop with the latest tech insights and updates. Our authors regularl
 
 1. Clone this repository to your local machine.
    ```bash
-   git clone https://github.com/shahinsadik/techblog.git
+   git clone [https://github.com/shahinsadik/blog-web-client]
